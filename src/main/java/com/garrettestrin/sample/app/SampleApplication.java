@@ -8,9 +8,6 @@ import io.dropwizard.setup.Environment;
 import lombok.val;
 
 public class SampleApplication extends Application<SampleConfiguration> {
-    public static void main(String[] args) throws Exception {
-        new SampleApplication().run(args);
-    }
 
     @Override
     public String getName() {
