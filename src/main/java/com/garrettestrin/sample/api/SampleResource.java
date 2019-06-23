@@ -4,10 +4,10 @@ import com.garrettestrin.sample.api.ApiObjects.Sample;
 import com.codahale.metrics.annotation.Timed;
 import com.garrettestrin.sample.biz.SampleService;
 
-import javax.ws.rs.GET;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.core.MediaType;
 
 @Path("/sampleRootPath")
@@ -21,9 +21,9 @@ public class SampleResource {
     }
 
     @GET
-    @Path("specificPath")
+    @Path("specificPath/{name}")
     @Timed
-    public Sample sample(@QueryParam("name") String string) {
+    public Sample sample(@PathParam("name") String string) {
         return sampleService.sample(string);
     }
 }
