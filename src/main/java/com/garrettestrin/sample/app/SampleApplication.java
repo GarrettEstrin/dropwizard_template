@@ -7,8 +7,10 @@ import io.dropwizard.configuration.ResourceConfigurationSourceProvider;
 import io.dropwizard.configuration.SubstitutingSourceProvider;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import lombok.extern.jbosslog.JBossLog;
 import lombok.val;
 
+@JBossLog
 public class SampleApplication extends Application<SampleConfiguration> {
 
     @Override
@@ -32,6 +34,7 @@ public class SampleApplication extends Application<SampleConfiguration> {
         val deps = new DependencyManager(configuration, environment);
 
         // Register resources
+        log.info("Registering Resources.");
         environment.jersey().register(deps.sampleResource);
     }
 
