@@ -21,6 +21,7 @@ import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 @JBossLog
 @Getter
 class DependencyManager {
+    public final SampleResource sampleResource;
 
     DependencyManager(SampleConfiguration config, Environment env) {
         log.info("Initializing database pool...");
@@ -32,8 +33,7 @@ class DependencyManager {
 
         // SampleResource
         val sampleService = new SampleService(sampleDao);
-        final SampleResource sampleResource = new SampleResource(sampleService);
-        env.jersey().register(sampleResource);
+        sampleResource = new SampleResource(sampleService);
     }
 
     /** Generates a new database pool. */
