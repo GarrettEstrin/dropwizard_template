@@ -1,7 +1,5 @@
 package com.garrettestrin.sample.app;
 
-import com.garrettestrin.sample.api.SampleResource;
-import com.garrettestrin.sample.biz.SampleService;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -11,7 +9,7 @@ public class SampleApplication extends Application<SampleConfiguration> {
 
     @Override
     public String getName() {
-        return "sample";
+        return "Sample";
     }
 
     @Override
@@ -22,11 +20,7 @@ public class SampleApplication extends Application<SampleConfiguration> {
     @Override
     public void run(SampleConfiguration configuration,
                     Environment environment) {
-        // SampleResource
-        val sampleService = new SampleService();
-
-        final SampleResource sampleResource = new SampleResource(sampleService);
-        environment.jersey().register(sampleResource);
+        val deps = new DependencyManager(configuration, environment);
     }
 
 }
