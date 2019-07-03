@@ -17,7 +17,6 @@ public class SampleResource {
     private SampleService sampleService;
 
     public SampleResource(SampleService sampleService) {
-
         this.sampleService = sampleService;
     }
 
