@@ -5,7 +5,7 @@ public class Main {
         ApplicationPropertyLoader.loadProperties();
 
         if (args == null || args.length == 0) {
-            args = new String[] { "server", "sample.yml" };
+            args = new String[] { "server", "target/classes/sample.yml" };
         }
 
         new SampleApplication().run(args);
